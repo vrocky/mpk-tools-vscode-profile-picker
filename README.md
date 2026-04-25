@@ -22,6 +22,7 @@ Profile directories are stored in the Windows Registry under `HKEY_CURRENT_USER\
 - Settings window to add or remove profile directories using the native Windows folder picker
 - Gear button in the main window opens Settings without blocking the main window
 - Registry-backed persistence — no INI files, no JSON, no XML
+- Shared core library (`Shared/VsCodeProfileCommon`) for registry, profile scan, and recent-project parsing logic
 - Desktop shortcut creation via `CreateShortcut.ps1`
 
 ---
@@ -30,12 +31,6 @@ Profile directories are stored in the Windows Registry under `HKEY_CURRENT_USER\
 
 ```
 vscode-profile-picker/
-├── Models/
-│   ├── AppSettings.cs          # Application settings model
-│   └── VsCodeProfile.cs        # Profile data model
-├── Services/
-│   ├── SettingsService.cs      # Registry read/write for app settings
-│   └── ProfileScanService.cs   # Scans directories, builds profile list
 ├── Converters/
 │   └── StringToColorBrushConverter.cs  # Hex string → WPF SolidColorBrush
 ├── Views/
@@ -46,9 +41,14 @@ vscode-profile-picker/
 ├── app.ico                     # Application icon (VS Code's code.ico)
 ├── CreateShortcut.ps1          # PowerShell script to create desktop shortcut
 ├── docs/
-│   └── architecture.md         # Architecture and data flow documentation
-├── CLAUDE.md                   # AI agent instructions
+│   └── glossary.md             # Shared terminology for profile tooling
 └── README.md                   # This file
+
+Shared library:
+../mpk-profile-common-libs/
+└── VsCodeProfileCommon/        # Shared library used by multiple apps
+    ├── Models/
+    └── Services/
 ```
 
 ---
@@ -58,7 +58,7 @@ vscode-profile-picker/
 | Requirement | Notes |
 |---|---|
 | Windows 10 or 11 | WPF requires Windows |
-| .NET 6 or later | Targets `net6.0-windows` or later |
+| .NET 8 or later | Targets `net8.0-windows` |
 | Visual Studio 2022+ or `dotnet` CLI | For building |
 | Visual Studio Code | Must be accessible via the `code` command in PATH, or the full path must be configured in Settings |
 

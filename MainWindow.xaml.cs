@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using VsCodeProfilePicker.Models;
-using VsCodeProfilePicker.Services;
+using VsCodeProfileCommon.Models;
+using VsCodeProfileCommon.Services;
 using VsCodeProfilePicker.Views;
 
 namespace VsCodeProfilePicker;

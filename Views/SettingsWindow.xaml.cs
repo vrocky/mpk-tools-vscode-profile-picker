@@ -1,7 +1,7 @@
 using Microsoft.Win32;
 using System.Windows;
-using VsCodeProfilePicker.Models;
-using VsCodeProfilePicker.Services;
+using VsCodeProfileCommon.Models;
+using VsCodeProfileCommon.Services;
 
 namespace VsCodeProfilePicker.Views;
 
